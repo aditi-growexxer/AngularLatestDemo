@@ -1,0 +1,17 @@
+<h2>Book List</h2>
+
+<ul>
+  <li *ngFor="let book of books">
+    {{book.title}} by {{book.author}} - ${{book.price}}
+    <button (click)="editBook(book)">Edit</button>
+    <button (click)="deleteBook(book.id)">Delete</button>
+  </li>
+</ul>
+
+<h3>{{ editBookId ? 'Edit Book' : 'Add a New Book' }}</h3>
+<input type="text" placeholder="Title" [(ngModel)]="newBook.title">
+<input type="text" placeholder="Author" [(ngModel)]="newBook.author">
+<input type="number" placeholder="Price" [(ngModel)]="newBook.price">
+
+<button *ngIf="!editBookId" (click)="addBook()">Add Book</button>
+<button *ngIf="editBookId" (click)="updateBook()">Update Book</button>
